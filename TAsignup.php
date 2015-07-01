@@ -9,17 +9,19 @@
 <body>
 
  	<div class="jumbotron">
-      <h1 style="text-align:center"> TA Office System</h1>
-     	<form class="form-signin">
-     		<h2 class="form-signin-heading" style="text-align:center">Please sign in</h2>
+      <h1 style="text-align:center"> Sign up as a TA</h1>
+     	<form class="form-signin" action="index.php">
+     		<h2 class="form-signin-heading" style="text-align:center">Please Fill in the form:</h2>
+            <input type="text" id="first" class="form-control" style="width:500px;margin:auto" placeholder="First Name">
+        
+            <input type="text" id="last" class="form-control" style="width:500px;margin:auto" placeholder="Last Name">
+        
      		<input type="text" id="user" class="form-control" style="width:500px;margin:auto" placeholder="Username">
      	
-     		<input type="password" id="password" class="form-control" style="width:500px;margin:auto" placeholder="Password">
-     		<br>
-     		<input class="btn btn-lg btn-primary btn-block" type="submit" name="Submit" value="Login">
-            <a button href="TAsignup.php" class="btn btn-lg btn-primary btn-block">Register as a TA</button></a>
-            <a button href="Studentsignup.php"class="btn btn-lg btn-primary btn-block">Register as a Student</button></a>
-
+     		<input type="text" id="password" class="form-control" style="width:500px;margin:auto" placeholder="Password">
+        
+            
+     		<input class="btn btn-lg btn-primary btn-block" type="submit" name="Submit" value="Signup">
      	</form>
     </div>
 
