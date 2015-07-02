@@ -10,7 +10,7 @@
 
  	<div class="jumbotron">
       <h1 style="text-align:center"> TA Office System</h1>
-     	<form class="form-signin">
+     	<form class="form-signin" action="TAlogin.php">
      		<h2 class="form-signin-heading" style="text-align:center">Please sign in</h2>
      		<input type="text" id="user" class="form-control" style="width:500px;margin:auto" placeholder="Username">
      	
