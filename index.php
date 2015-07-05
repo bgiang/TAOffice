@@ -10,11 +10,11 @@
 
  	<div class="jumbotron">
       <h1 style="text-align:center"> TA Office System</h1>
-     	<form class="form-signin" action="TAlogin.php">
+     	<form class="form-signin" action="TAlogin.php" method="post">
      		<h2 class="form-signin-heading" style="text-align:center">Please sign in</h2>
-     		<input type="text" id="user" class="form-control" style="width:500px;margin:auto" placeholder="Username">
+     		<input type="text" id="user" class="form-control" style="width:500px;margin:auto" placeholder="Username" required>
      	
-     		<input type="password" id="password" class="form-control" style="width:500px;margin:auto" placeholder="Password">
+     		<input type="password" id="password" class="form-control" style="width:500px;margin:auto" placeholder="Password" required>
      		<br>
      		<input class="btn btn-lg btn-primary btn-block" type="submit" name="Submit" value="Login">
             <a button href="TAsignup.php" class="btn btn-lg btn-primary btn-block">Register as a TA</button></a>

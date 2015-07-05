@@ -4,101 +4,46 @@
 <meta charset="UTF-8">
 <title>Title of the document</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<?php
+require_once "tadblogin.php"; 
 
+?>
 </head>
 
 <body>
+    <?php
+    if(isset($_POST["Submit"])){
 
+        $username=$_POST["user"];
+
+        if(checkuser($username,$host,$user,$password,$database)==false){
+            echo "User don't exist";
+           
+
+        }else{
+            echo "User exist";
+        }
+    }
+
+    ?>
  	<div class="jumbotron">
       <h1 style="text-align:center"> Sign up as a TA</h1>
     </div>
    <div class="container">
-    <form action="index.php">
-        <input type="text" id="first" class="form-control" style="width:500px;margin:auto" placeholder="First Name">
+    <form action="TAsignup.php" method="post">
+            <input type="text" value="fake" name="first" class="form-control" style="width:500px;margin:auto" placeholder="First Name" required>
         
-            <input type="text" id="last" class="form-control" style="width:500px;margin:auto" placeholder="Last Name">
-        
-     		<input type="text" id="user" class="form-control" style="width:500px;margin:auto" placeholder="Username">
-     	
-     		<input type="text" id="password" class="form-control" style="width:500px;margin:auto" placeholder="Password">
+            <input type="text"  value="fake" name="last" class="form-control" style="width:500px;margin:auto" placeholder="Last Name" required>
+            <input type="email" value="fake@gma.com" name="email" class="form-control" style="width:500px;margin:auto" placeholder="Password" required>
+     		<input type="text" name="user" class="form-control" style="width:500px;margin:auto" placeholder="Username" required>
+     	      
+     		<input type="text" value="fake" id="password" class="form-control" style="width:500px;margin:auto" placeholder="Password" required>
         
             <br>
             <h2>Profile Image</h2>
             <input type="file" name="img">
             <br>
-            <h2>Office Hours</h2>
-            <div class="checkbox" >
-                <label>
-                    <input type="checkbox">Monday
-                </label>
-            </div>
-            <label class="checkbox-inline"><input type="checkbox" value="">8am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">9am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">10am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">11am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">12pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">1pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">2pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">3pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">4pm</label>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Tuesday
-                </label>
-            </div>
-            <label class="checkbox-inline"><input type="checkbox" value="">8am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">9am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">10am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">11am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">12pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">1pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">2pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">3pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">4pm</label>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Wednesday
-                </label>
-            </div>
-            <label class="checkbox-inline"><input type="checkbox" value="">8am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">9am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">10am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">11am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">12pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">1pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">2pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">3pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">4pm</label>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Thursday
-                </label>
-            </div>
-            <label class="checkbox-inline"><input type="checkbox" value="">8am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">9am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">10am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">11am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">12pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">1pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">2pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">3pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">4pm</label>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Friday
-                </label>
-            </div>
-            <label class="checkbox-inline"><input type="checkbox" value="">8am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">9am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">10am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">11am</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">12pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">1pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">2pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">3pm</label>
-            <label class="checkbox-inline"><input type="checkbox" value="">4pm</label>
-            <br>
-            <br>
+            
      		<input class="btn btn-lg btn-primary btn-block" type="submit" name="Submit" value="Signup">
      	</form>
  
