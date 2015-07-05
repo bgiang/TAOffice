@@ -7,31 +7,36 @@
 </head>
 
 <body>
-
-  <div class="jumbotron">
+    <?php
+    require_once "tadblogin.php"; 
+    session_start();
+    $name=$_SESSION["curruser"];
+    $database=new database();
+    ?>
+    <div class="jumbotron">
       <h1 style="text-align:center"> TA Office Hour</h1>
-     
 
-         <h2 class="form-signin-heading" style="text-align:center">Full Name</h2>
-       
-    </div>
-         <a button class="btn btn-lg btn-primary btn-block" data-toggle="collapse" href="#class" >
-            See Appointment
-        </a>
 
-        <div id="class" class="collapse">   
-         <ul class="list-group">
-          <li class="list-group-item">CMSC389N</li>
-          <li class="list-group-item">CMSC216</li>
-      </ul>
+      <?php $database->display($name)?>
+
   </div>
-  <a button class="btn btn-lg btn-primary btn-block" data-toggle="collapse" href="#addclass" >
+  <a button class="btn btn-lg btn-primary btn-block" data-toggle="collapse" href="#class" >
+    See Appointment
+</a>
+
+<div id="class" class="collapse">   
+   <ul class="list-group">
+      <li class="list-group-item">CMSC389N</li>
+      <li class="list-group-item">CMSC216</li>
+  </ul>
+</div>
+<a button class="btn btn-lg btn-primary btn-block" data-toggle="collapse" href="#addclass" >
     Add a Class
 </a>
 <div id="addclass" class="collapse">
     <div class="container">
         <br>
-        <form action="index.php">
+        <form >
             <input type="text" id="classname" class="form-control" style="width:500px;margin:auto" placeholder="Name of Class">
             <h2>Monday</h2>
             <label class="checkbox-inline"><input type="checkbox" value="">8am</label>
@@ -83,12 +88,12 @@
             <label class="checkbox-inline"><input type="checkbox" value="">2pm</label>
             <label class="checkbox-inline"><input type="checkbox" value="">3pm</label>
             <label class="checkbox-inline"><input type="checkbox" value="">4pm</label>
-
+             <input class="btn btn-lg btn-primary btn-block" type="submit" name="Add" value="Add Class">
         </form>
     </div>
 </div>
- <form class="form-signin" action="index.php" method="post">
-<input class="btn btn-lg btn-primary btn-block" type="submit" name="Submit" value="Logout">
+<form class="form-signin" action="index.php" method="post">
+    <input class="btn btn-lg btn-primary btn-block" type="submit" name="logout" value="Logout">
 </form>
 
 

@@ -8,15 +8,50 @@
 
 <body>
 
+    <?php
+    require_once "tadblogin.php"; 
+    session_start();
+    $usererror="";
+    if(isset($_POST["logout"])){
+        unset($_SESSION["curruser"]);
+        unset($_SESSION["type"]);
+    }
+    if(isset($_SESSION["curruser"])){
+        //set type to 0 for student login page
+        if($_SESSEION["type"]==1){
+            header("Location:talogin.php");
+        }else{
+
+        }
+    }
+    $database=new database();
+    if(isset($_POST["login"])){
+
+        $username=$_POST["user"];
+        $pw=$_POST["password"];
+        if($database->verifyuser($username,$pw)==false){
+            $usererror="Incorrect username or password";
+            
+        }else{
+            $_SESSION["curruser"]=$username;
+
+            $_SESSION["type"]=1;
+            header("Location: talogin.php");
+           
+        }
+    }
+    ?>
  	<div class="jumbotron">
       <h1 style="text-align:center"> TA Office System</h1>
-     	<form class="form-signin" action="TAlogin.php" method="post">
+     	<form class="form-signin" action="index.php" method="post">
      		<h2 class="form-signin-heading" style="text-align:center">Please sign in</h2>
-     		<input type="text" id="user" class="form-control" style="width:500px;margin:auto" placeholder="Username" required>
-     	
-     		<input type="password" id="password" class="form-control" style="width:500px;margin:auto" placeholder="Password" required>
+            <h4 class="text-center">Username</h4>
+     		<input type="text" name="user" class="form-control" style="width:500px;margin:auto" placeholder="Username" required>
+     	    <h4 class="text-center">Password</h4>
+     		<input type="password" name="password" class="form-control" style="width:500px;margin:auto" placeholder="Password" required>
      		<br>
-     		<input class="btn btn-lg btn-primary btn-block" type="submit" name="Submit" value="Login">
+            <h4 class="text-center"><?php echo $usererror?></h4>
+     		<input class="btn btn-lg btn-primary btn-block" type="submit" name="login" value="Login">
             <a button href="TAsignup.php" class="btn btn-lg btn-primary btn-block">Register as a TA</button></a>
             <a button href="Studentsignup.php"class="btn btn-lg btn-primary btn-block">Register as a Student</button></a>
 

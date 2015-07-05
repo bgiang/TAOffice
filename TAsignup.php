@@ -11,17 +11,25 @@ require_once "tadblogin.php";
 </head>
 
 <body>
+
     <?php
+    $usererror="";
+    $fileerror="";
+    $database=new database();
     if(isset($_POST["Submit"])){
 
         $username=$_POST["user"];
 
-        if(checkuser($username,$host,$user,$password,$database)==false){
-            echo "User don't exist";
-           
+        if($database->verifyuser($username)==false){
+            $usererror="";
+
+
+            $database->adduser();
+            header("Location: signupconfirm.html");
 
         }else{
-            echo "User exist";
+            $usererror="this user existed already";
+           
         }
     }
 
@@ -31,13 +39,17 @@ require_once "tadblogin.php";
     </div>
    <div class="container">
     <form action="TAsignup.php" method="post">
-            <input type="text" value="fake" name="first" class="form-control" style="width:500px;margin:auto" placeholder="First Name" required>
-        
-            <input type="text"  value="fake" name="last" class="form-control" style="width:500px;margin:auto" placeholder="Last Name" required>
-            <input type="email" value="fake@gma.com" name="email" class="form-control" style="width:500px;margin:auto" placeholder="Password" required>
-     		<input type="text" name="user" class="form-control" style="width:500px;margin:auto" placeholder="Username" required>
-     	      
-     		<input type="text" value="fake" id="password" class="form-control" style="width:500px;margin:auto" placeholder="Password" required>
+            <h4 class="text-center">First Name</h4>
+            <input type="text" name="first" class="form-control" style="width:500px;margin:auto" placeholder="First Name" required>
+            <h4 class="text-center">Last Name</h4>
+            <input type="text" name="last" class="form-control" style="width:500px;margin:auto" placeholder="Last Name" required>
+            <h4 class="text-center">Email</h4>
+            <input type="email"  name="email" class="form-control" style="width:500px;margin:auto" placeholder="Password" required>
+     		<h4 class="text-center">Username</h4>
+            <input type="text" name="user" class="form-control" style="width:500px;margin:auto" placeholder="Username" required>
+     	    <p class="text-center"><?php echo  $usererror; ?></p>  
+            <h4 class="text-center">Password</h4>
+     		<input type="password"  name="password" class="form-control" style="width:500px;margin:auto" placeholder="Password" required>
         
             <br>
             <h2>Profile Image</h2>
