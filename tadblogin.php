@@ -93,6 +93,28 @@
 			$db_connection->close();
 		}
 
+		//update image user to the database
+		function addimage($image){
+				$db_connection = new mysqli($this->host, $this->user, $this->password, $this->database);
+			if ($db_connection->connect_error) {
+						die($db_connection->connect_error);
+			} else {
+				
+			}
+			$username=trim($_POST["user"]);
+			$imagefile=addslashes((file_get_contents($image)));
+			$query="update tauser set profilepic='$imagefile' where username='$username'";
+				
+			$result = $db_connection->query($query);
+			if (!$result) {
+				die("Insertion failed: " . $db_connection->error);
+			} else {
+			
+			
+			}
+					
+			$db_connection->close();
+		}
 		function display($username){
 			
 			$db_connection = new mysqli($this->host, $this->user, $this->password, $this->database);
@@ -120,11 +142,18 @@
 						$first=$row['first'];
 						$last=$row['last'];
 						$email=$row['email'];
+
 						
 					}
 					echo "<h2 class='text-center'>$first $last</h2>";
 					echo "<h2 class='text-center'>Email: $email</h2>";
-					echo "<img style='  display: block;margin-left: auto;margin-right:auto;' src='noprofile.gif'></img>";
+					if($row['profilepic']!=NULL){
+						$img=$row['profilepic'];
+						echo '<img style="display: block;margin-left: auto;margin-right:auto;" 
+						src="data:image;base64,'.base64_encode($img).'"">';
+					}else{
+						echo "<img style=' display: block;margin-left: auto;margin-right:auto;' src='noprofile.gif'>";
+					}
 				}
 			}
 					

@@ -18,7 +18,7 @@
     }
     if(isset($_SESSION["curruser"])){
         //set type to 0 for student login page
-        if($_SESSEION["type"]==1){
+        if($_SESSION["type"]==1){
             header("Location:talogin.php");
         }else{
 

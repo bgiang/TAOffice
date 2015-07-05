@@ -20,12 +20,30 @@ require_once "tadblogin.php";
 
         $username=$_POST["user"];
 
-        if($database->verifyuser($username)==false){
+        if($database->checkuser($username)==false){
             $usererror="";
 
 
-            $database->adduser();
-            header("Location: signupconfirm.html");
+            
+            if(isset($_FILES['img'])){
+                $imagesize=getimagesize(($_FILES['img']['tmp_name']));
+                $filetype=$_FILES['img']['type'];
+               
+                if($filetype != 'image/png' &&
+                 $filetype != 'image/gif' &&
+                 $filetype != 'image/jpg' &&
+                 $filetype != 'image/jpeg' ){
+                    $fileerror.="Not a valid image";
+                }else{
+                    $database->adduser();
+                    $database->addimage($_FILES['img']['tmp_name']);
+                    header("Location: signupconfirm.html");
+                }
+            }else{
+                $database->adduser();
+                header("Location: signupconfirm.html");
+            }
+            
 
         }else{
             $usererror="this user existed already";
@@ -38,7 +56,7 @@ require_once "tadblogin.php";
       <h1 style="text-align:center"> Sign up as a TA</h1>
     </div>
    <div class="container">
-    <form action="TAsignup.php" method="post">
+    <form action="TAsignup.php" method="post" enctype="multipart/form-data">
             <h4 class="text-center">First Name</h4>
             <input type="text" name="first" class="form-control" style="width:500px;margin:auto" placeholder="First Name" required>
             <h4 class="text-center">Last Name</h4>
@@ -54,6 +72,7 @@ require_once "tadblogin.php";
             <br>
             <h2>Profile Image</h2>
             <input type="file" name="img">
+            <p class="text-center"><?php echo  $fileerror; ?></p>  
             <br>
             
      		<input class="btn btn-lg btn-primary btn-block" type="submit" name="Submit" value="Signup">
