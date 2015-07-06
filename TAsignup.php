@@ -77,6 +77,7 @@ require_once "tadblogin.php";
             
      		<input class="btn btn-lg btn-primary btn-block" type="submit" name="Submit" value="Signup">
      	</form>
+        <a button href="index.php" class="btn btn-lg btn-primary btn-block">Back</a>
  
 </div>
 

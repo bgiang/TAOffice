@@ -6,7 +6,12 @@ tables ta_user: //This is where we going to store all the user
 	email varchar(50)
 	username varchar(50);
 	password varchar(50);
-	profilepic BLOB; //Suppose to be profile picture haven't figure out yet
+	profilepic BLOB; //Working
 
+
+//Plan for ta_class
 tables ta_class: //TA class information
-	IN PROGRESS
+	username varchar(50);
+	classname varchar(7);
+	day varchar(2) //ie. M,T,W,Th,F
+	hours varchar(18) // Ex. range 8am to 5pm so format 081012 -> (8am,10am.12pm) split string by 2 char

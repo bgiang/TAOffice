@@ -52,10 +52,11 @@
      		<br>
             <h4 class="text-center"><?php echo $usererror?></h4>
      		<input class="btn btn-lg btn-primary btn-block" type="submit" name="login" value="Login">
-            <a button href="TAsignup.php" class="btn btn-lg btn-primary btn-block">Register as a TA</button></a>
-            <a button href="Studentsignup.php"class="btn btn-lg btn-primary btn-block">Register as a Student</button></a>
-
+          
      	</form>
+        <a button href="TAsignup.php" class="btn btn-lg btn-primary btn-block">Register as a TA</a>
+        <a button href="Studentsignup.php"class="btn btn-lg btn-primary btn-block">Register as a Student</a>
+
     </div>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
