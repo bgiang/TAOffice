@@ -21,7 +21,7 @@
         if($_SESSION["type"]==1){
             header("Location:talogin.php");
         }else{
-
+            header("Location: Studentlogin.php");
         }
     }
     $database=new database();
@@ -34,9 +34,14 @@
             
         }else{
             $_SESSION["curruser"]=$username;
-
-            $_SESSION["type"]=1;
-            header("Location: talogin.php");
+            
+            if($database->getTA($username)==1){
+                $_SESSION["type"]=1;
+                header("Location: talogin.php");
+            }else{
+                $_SESSION["type"]=2;
+                header("Location: Studentlogin.php");
+            }
            
         }
     }
@@ -54,8 +59,11 @@
      		<input class="btn btn-lg btn-primary btn-block" type="submit" name="login" value="Login">
           
      	</form>
+        <br>
+        <h4 class="text-center">Register Here</h4>
         <a button href="TAsignup.php" class="btn btn-lg btn-primary btn-block">Register as a TA</a>
-        <a button href="Studentsignup.php"class="btn btn-lg btn-primary btn-block">Register as a Student</a>
+       
+        <a button href="Studentsignup.php" class="btn btn-lg btn-primary btn-block">Register as a Student</a>
 
     </div>
 

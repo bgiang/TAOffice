@@ -24,16 +24,17 @@ require_once "tadblogin.php";
             $usererror="";
 
 
-            
+            $type=1;
             if(isset($_FILES['img'])){
-                $imagesize=getimagesize(($_FILES['img']['tmp_name']));
+               
                 $filetype=$_FILES['img']['type'];
                
                 if($filetype != 'image/png' &&
                  $filetype != 'image/gif' &&
                  $filetype != 'image/jpg' &&
                  $filetype != 'image/jpeg' ){
-                    $fileerror.="Not a valid image";
+                    $database->adduser();
+                   header("Location: signupconfirm.html");
                 }else{
                     $database->adduser();
                     $database->addimage($_FILES['img']['tmp_name']);
@@ -62,13 +63,13 @@ require_once "tadblogin.php";
             <h4 class="text-center">Last Name</h4>
             <input type="text" name="last" class="form-control" style="width:500px;margin:auto" placeholder="Last Name" required>
             <h4 class="text-center">Email</h4>
-            <input type="email"  name="email" class="form-control" style="width:500px;margin:auto" placeholder="Password" required>
+            <input type="email"  name="email" class="form-control" style="width:500px;margin:auto" placeholder="Email" required>
      		<h4 class="text-center">Username</h4>
             <input type="text" name="user" class="form-control" style="width:500px;margin:auto" placeholder="Username" required>
      	    <p class="text-center"><?php echo  $usererror; ?></p>  
             <h4 class="text-center">Password</h4>
      		<input type="password"  name="password" class="form-control" style="width:500px;margin:auto" placeholder="Password" required>
-        
+            <input type="hidden" name="type" value=1>
             <br>
             <h2>Profile Image</h2>
             <input type="file" name="img">
