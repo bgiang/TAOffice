@@ -1,5 +1,8 @@
 # TA Office Hour System
 A simple web application that allow student and teaching assistant to communicate with each other through a message board and keeping track of TA office hours
+# Credit
+
+Brian Giang, Luping Zhou,Yali Li
 
 # Feature
 + Registration- Both TA and student can register an account for the web application.
